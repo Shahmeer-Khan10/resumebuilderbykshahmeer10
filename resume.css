@@ -160,6 +160,10 @@ header h3 {
         width: 100%;
         height: 29cm;
     }
+    header{
+        background-color: #007acc;
+        width: 95%;
+    }
 
 }
 
@@ -183,6 +187,7 @@ header h3 {
     }
     header{
         background-color: #007acc;
+        width: 95%;
     }
     .aside{
         width: 30%;
