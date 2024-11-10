@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="resume.css">
+</head>
+<body>
+   <div class="real">
+       <div class="resumeDiv">
+           <header>
+               <div class="headerleft">
+                   <h1><span id="resName"></span></h1>
+                   <h3><span id="resDesig"></span></h3>
+               </div>
+               <div class="headerimg">
+                   <!-- Profile picture will be loaded dynamically -->
+                   <img src="default-profile.webp" alt="Profile picture">
+               </div>
+           </header>
+       </div>
+       <div class="container">
+           <div class="aside">
+               <section id="con-sec" class="contact">
+                   <h2>Contact</h2>
+                   <h4>Phone</h4>
+                   <p><span id="resPhone"></span></p>
+                   <h4>Address</h4>
+                   <p><span id="resAddress"></span></p>
+                   <h4>Email</h4>
+                   <p><span id="resEmail"></span></p>
+                   <br>
+                   <h2></h2>
+               </section>
+               <section id="edu-sec" class="education">
+                   <h2>Education</h2>
+                   <br>
+                   <p><span id="resPassingYear1"></span></p>
+                   <h3><span id="resDegree1"></span></h3>
+                   <p><span id="resInstitution1"></span></p>
+                   <br>
+                   <h2></h2>
+                   <p><span id="resPassingYear2"></span></p>
+                   <h3><span id="resDegree2"></span></h3>
+                   <p><span id="resInstitution2"></span></p>
+               </section>
+               <br>
+               <h2></h2>
+               <section id="skills-sec" class="skills">
+                   <h2>Skills</h2>
+                   <p><span id="resSkill1"></span></p>
+                   <p><span id="resSkill2"></span></p>
+               </section>
+               <section id="lan-sec" class="languages">
+                <br>
+                <h2></h2>
+                   <h2>Languages</h2>
+                   <p><span id="resLanguage1"></span></p>
+                   <p><span id="resLanguage2"></span></p>
+               </section>
+           </div>
+           <div class="main">
+               <section>
+                   <h2>Profile</h2>
+                   <p>Hardworking student ready to utilize skills and passion to further a company's mission. Technologically adept with experience in social media platforms, office technology programs, and computer skills.</p>
+               </section>
+               <section id="main-exp-sec" class="experiences">
+                   <h2>Experience</h2>
+                   <p><span id="resStartDate"></span> - <span id="resEndDate"></span></p>
+                   <h3><span id="resCompany"></span></h3>
+                   <p><span id="resPosition"></span></p>
+               </section>
+               <section>
+                   <h2>Achievements</h2>
+                   <p><span id="resAchievement1"></span></p>
+                   <h2></h2>
+                   <p><span id="resAchievement2"></span></p>
+                   <h2></h2>
+                   <p><span id="resAchievement3"></span></p>
+               </section>
+               <section id="ref-sec" class="references">
+                   <h2>References</h2>
+                   <p>Available upon request</p>
+               </section>
+           </div>
+       </div>
+   </div>
+
+   <div class="resumebtn">
+       <button id="print-btn">Print</button>
+   </div>
+   <script src="resume.js"></script>
+</body>
+</html>

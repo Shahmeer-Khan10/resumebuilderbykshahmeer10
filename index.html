@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Static Resume Builder by Shahmeer Khan</h1>
+    <div class="pis">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+
+    <form name="resumeform" id="resumeform">
+      <fieldset>
+        <legend>Personal Information</legend>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="write your name" required />
+
+        <label for="desig">Designation:</label>
+        <input type="text" id="desig" name="desig" placeholder="write your Designation" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="write your email" required />
+        <label for="add">Address:</label>
+        <input type="text" id="add" name="add" placeholder="write your address" required />
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" placeholder="write your phone no" required />
+
+        <label for="img">Select your Image:</label>
+        <input type="file" id="img" name="img" placeholder="select your picture" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Education</legend>
+        <label for="passing-year">Passing year:</label>
+        <input type="number" id="passing-year" name="passing-year" placeholder="write passing-year" />
+
+        <label for="deg">Degree:</label>
+        <input type="text" id="deg" name="deg" placeholder="write your Degree" required />
+        <label for="inst">Institution:</label>
+        <input type="text" id="inst" name="inst" placeholder="write your Institution" required />
+
+        <label for="passing-year2">Passing year2:</label>
+        <input type="number" id="passing-year2" name="passing-year2" placeholder="write passing-year" />
+
+        <label for="deg2">Degree2:</label>
+        <input type="text" id="deg2" name="deg2" placeholder="write your Degree" />
+        <label for="inst2">Institution:</label>
+        <input type="text" id="inst2" name="inst2" placeholder="write your Institution" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Skills</legend>
+        <label for="skills">Skills:</label>
+        <input type="text" id="skill1" name="skill1" placeholder="write your skill1" required />
+        <input type="text" id="skill2" name="skill2" placeholder="write your skill2" required />
+      </fieldset>
+
+      <fieldset>
+        <legend>Language</legend>
+        <label for="lang">Language:</label>
+        <input type="text" id="lang" name="lang" placeholder="write your language" required />
+        <input type="text" id="lang2" name="lang2" placeholder="write your language2" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Experience</legend>
+        <label for="company">Company:</label>
+        <input type="text" id="company" name="company" placeholder="write your company" required />
+        <label for="start-date">Start Date:</label>
+        <input type="number" id="start-date" name="start-date" placeholder="write start-year" />
+        <label for="end-date">End Date:</label>
+        <input type="number" id="end-date" name="end-date" placeholder="write end-year" />
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" placeholder="write your position" required />
+      </fieldset>
+
+      <fieldset>
+        <legend>Achievement</legend>
+        <label for="Achievement">Achievement:</label>
+        <input type="text" id="Achievement1" name="Achievement1" placeholder="write your Achievement1" />
+        <input type="text" id="Achievement2" name="Achievement2" placeholder="write your Achievement2" />
+        <input type="text" id="Achievement3" name="Achievement3" placeholder="write your Achievement3" />
+      </fieldset>
+
+      <button class="btn" id="submitBtn" type="submit">Generate Resume</button>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
