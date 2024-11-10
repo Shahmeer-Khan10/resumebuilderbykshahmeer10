@@ -38,6 +38,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 12px;
+    background-color: #007acc;
     
 }
 header h1 {
@@ -168,7 +169,6 @@ header h3 {
 
     .real {
         border: none;
-        box-shadow: none;
         width: 21cm;
         height: 95%;
         padding: 0;
@@ -180,6 +180,9 @@ header h3 {
         width: 21cm;
         height: 95%;
         overflow: hidden;
+    }
+    header{
+        background-color: #007acc;
     }
     .aside{
         width: 30%;
