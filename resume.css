@@ -1,209 +1,314 @@
+/* resume.css (Final Updated & Polished Version) */
+
+/* --- FONT & THEME DEFINITIONS --- */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --font-main: "Poppins", sans-serif;
+
+  /* Defining the themes */
+  --modern-primary: #3498db;
+  --modern-dark: #2c3e50;
+  --modern-light-text: #bdc3c7;
+  --modern-sidebar-bg: #f8f9fa;
+  --modern-border: #eef2f5;
+  --classic-primary: #8d6e63;
+  --classic-dark: #3e2723;
+  --classic-light-text: #a1887f;
+  --classic-sidebar-bg: #f5f5f5;
+  --classic-border: #e0e0e0;
+  --emerald-primary: #10ac84;
+  --emerald-dark: #0d4d44;
+  --emerald-light-text: #a2d5c6;
+  --emerald-sidebar-bg: #f0f9f6;
+  --emerald-border: #d1e7e1;
+  --slate-primary: #64748b;
+  --slate-dark: #1e293b;
+  --slate-light-text: #94a3b8;
+  --slate-sidebar-bg: #f1f5f9;
+  --slate-border: #e2e8f0;
+}
+
+/* --- BASE STYLES --- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-   
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
 body {
-    background-color: #f5f7fa;
-    padding: 20px;
-    width: 21cm;
-    height: 29.7cm;
+  font-family: var(--font-main);
+  background: #f0f2f5;
+  color: #334155;
+  line-height: 1.7;
+  font-size: 16px;
 }
-
 .real {
-    width: 20cm;
-    height: 29cm;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 8px;
-    overflow: hidden;
+  max-width: 900px;
+  margin: 30px auto;
+  background: #ffffff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.resumeDiv {
-    width: 100%;
-    height: 20%;
-    background-color: #007acc;
-   
-    border-radius: 8px 8px 0 0;
-    
-    padding: 10px;
+/* --- THEME SWITCHER & ACTION BUTTONS --- */
+.theme-switcher {
+  text-align: center;
+  padding: 15px;
+  background: #e2e8f0;
 }
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    background-color: #007acc;
-    
+.theme-switcher span {
+  margin-right: 10px;
+  font-weight: 500;
+  color: #475569;
 }
-header h1 {
-    font-size: 50px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #fff;
+.theme-switcher button {
+  padding: 6px 16px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+  border-radius: 6px;
+  margin: 0 4px;
+  transition: all 0.2s ease-in-out;
 }
-
-header h3 {
-    font-size: 18px;
-    color: #e0e0e0;
+.theme-switcher button.active {
+  color: #ffffff;
+  border-color: transparent;
 }
-
-.headerimg img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 3px solid #fff;
-    object-fit: cover;
+.theme-switcher button:not(.active):hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
 }
-
-.container {
-    display: flex;
-    width: 100%;
-   
+/* Active button colors for each theme */
+[data-theme="modern"] .theme-switcher .active {
+  background-color: var(--modern-dark);
 }
-
-.aside {
-    width: 32%;
-    background-color: #f0f4f8;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 2%;
-
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+[data-theme="classic"] .theme-switcher .active {
+  background-color: var(--classic-dark);
 }
-
-.aside h2 {
-    font-size: 20px;
-    color: #007acc;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #007acc;
+[data-theme="emerald"] .theme-switcher .active {
+  background-color: var(--emerald-dark);
 }
-
-.aside h4 {
-    font-size: 16px;
-    color: #333;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.aside p {
-    font-size: 14px;
-    color: #666;
-    margin: 4px 0;
-}
-
-.main {
-    width: 64%;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 2%;
-}
-
-.main h2 {
-    font-size: 22px;
-    color: #007acc;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #007acc;
-}
-
-.main section {
-    margin-bottom: 20px;
-}
-
-.main p {
-    font-size: 18px;
-    color: #555;
-    line-height: 1.8;
-    margin-bottom: 10px;
-}
-
-.main h3 {
-    font-size: 20px;
-    color: #333;
-    margin: 5px 0;
+[data-theme="slate"] .theme-switcher .active {
+  background-color: var(--slate-dark);
 }
 
 .resumebtn {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  text-align: center;
+  padding: 25px 0 35px 0;
+  background-color: #f0f2f5;
 }
-
 .resumebtn button {
-    background-color: #007acc;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s;
+  color: #ffffff;
+  border: none;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
-
 .resumebtn button:hover {
-    background-color: #005c99;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+/* Button colors for each theme */
+[data-theme="modern"] .resumebtn button {
+  background-color: var(--modern-primary);
+}
+[data-theme="classic"] .resumebtn button {
+  background-color: var(--classic-primary);
+}
+[data-theme="emerald"] .resumebtn button {
+  background-color: var(--emerald-primary);
+}
+[data-theme="slate"] .resumebtn button {
+  background-color: var(--slate-primary);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .real {
-        width: 100%;
-        height: 29cm;
-    }
-    header{
-        background-color: #007acc;
-        width: 95%;
-    }
-
+/* --- HEADER (FIXED FOR PDF COLOR) --- */
+.resumeDiv header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  padding: 35px 45px;
+}
+/* Applying background color directly for each theme to fix PDF rendering */
+[data-theme="modern"] .resumeDiv header {
+  background: var(--modern-dark);
+}
+[data-theme="classic"] .resumeDiv header {
+  background: var(--classic-dark);
+}
+[data-theme="emerald"] .resumeDiv header {
+  background: var(--emerald-dark);
+}
+[data-theme="slate"] .resumeDiv header {
+  background: var(--slate-dark);
 }
 
-/* Print Styles */
-@media print {
-  
+.headerleft h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.headerleft h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+[data-theme="modern"] .headerleft h3 {
+  color: var(--modern-light-text);
+}
+[data-theme="classic"] .headerleft h3 {
+  color: var(--classic-light-text);
+}
+[data-theme="emerald"] .headerleft h3 {
+  color: var(--emerald-light-text);
+}
+[data-theme="slate"] .headerleft h3 {
+  color: var(--slate-light-text);
+}
+.headerimg img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+}
 
-    .real {
-        border: none;
-        width: 20cm;
-        height: 95%;
-        padding: 0;
-        margin: 0;
-        overflow: hidden;
-        
-    }
-    body{
-        width: 21cm;
-        height: 95%;
-        overflow: hidden;
-    }
-    header{
-        background-color: #007acc;
-        width: 95%;
-    }
-    .aside{
-        width: 30%;
-    }
-    .main{
-        width: 65%;
+/* --- MAIN LAYOUT & CONTENT --- */
+.container {
+  display: flex;
+  padding: 35px 45px;
+  gap: 45px;
+}
+.aside {
+  flex: 1 0 35%;
+  max-width: 35%;
+}
+.main {
+  flex: 1 0 60%;
+}
 
-    }
-    .container {
-        padding: 2px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-       
-    }
-    .resumebtn {
-        display: none;
-    }
+h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid;
+}
+.main h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.aside h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+p,
+.aside li {
+  color: #475569;
+}
+
+/* Applying theme colors to content */
+[data-theme="modern"] h2,
+[data-theme="modern"] .main h3 {
+  color: var(--modern-dark);
+}
+[data-theme="modern"] h2 {
+  border-color: var(--modern-border);
+}
+[data-theme="classic"] h2,
+[data-theme="classic"] .main h3 {
+  color: var(--classic-dark);
+}
+[data-theme="classic"] h2 {
+  border-color: var(--classic-border);
+}
+[data-theme="emerald"] h2,
+[data-theme="emerald"] .main h3 {
+  color: var(--emerald-dark);
+}
+[data-theme="emerald"] h2 {
+  border-color: var(--emerald-border);
+}
+[data-theme="slate"] h2,
+[data-theme="slate"] .main h3 {
+  color: var(--slate-dark);
+}
+[data-theme="slate"] h2 {
+  border-color: var(--slate-border);
+}
+
+.aside ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.aside ul li {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+[data-theme="modern"] .aside ul li {
+  background: var(--modern-sidebar-bg);
+}
+[data-theme="classic"] .aside ul li {
+  background: var(--classic-sidebar-bg);
+}
+[data-theme="emerald"] .aside ul li {
+  background: var(--emerald-sidebar-bg);
+}
+[data-theme="slate"] .aside ul li {
+  background: var(--slate-sidebar-bg);
+}
+
+.main ul {
+  padding-left: 20px;
+}
+.education-item,
+.experience-item {
+  margin-bottom: 25px;
+}
+.date-range,
+.education-item p:first-of-type {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* --- RESPONSIVE & HELPER CLASSES --- */
+@media (max-width: 900px) {
+  .real {
+    margin: 0;
+    border-radius: 0;
+    max-width: 100%;
+  }
+  .container {
+    flex-direction: column;
+    padding: 25px;
+    gap: 30px;
+  }
+  .aside,
+  .main {
+    max-width: 100%;
+    flex-basis: auto;
+  }
+  .resumeDiv header {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 30px 25px;
+  }
+  .headerleft {
+    margin-top: 25px;
+  }
+}
+.hide {
+  display: none !important;
 }
