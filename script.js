@@ -1,100 +1,91 @@
 "use strict";
 
-function setTextOrHide(id, value) {
-    const el = document.getElementById(id);
-    if (el) {
-        if (value && value.trim() !== "") {
-            el.textContent = value;
-            el.parentElement?.classList.remove("hide");
-        } else {
-            el.textContent = "";
-            el.parentElement?.classList.add("hide");
+const resumeForm = document.getElementById("resumeform");
+
+// This function handles the form submission asynchronously
+async function handleFormSubmit(event) {
+    // 1. Prevent the form from submitting the default way
+    event.preventDefault();
+
+    // 2. Define all the fields we want to save.
+    // This makes it super easy to add or remove fields later.
+    const textFields = [
+        { key: 'name', id: 'name' },
+        { key: 'designation', id: 'desig' },
+        { key: 'email', id: 'email' },
+        { key: 'phone', id: 'phone' },
+        { key: 'address', id: 'add' },
+        { key: 'passingYear1', id: 'passing-year' },
+        { key: 'passingYear2', id: 'passing-year2' },
+        { key: 'degree1', id: 'deg' },
+        { key: 'degree2', id: 'deg2' },
+        { key: 'institution1', id: 'inst' },
+        { key: 'institution2', id: 'inst2' },
+        { key: 'skill1', id: 'skill1' },
+        { key: 'skill2', id: 'skill2' },
+        { key: 'language1', id: 'lang' },
+        { key: 'language2', id: 'lang2' },
+        { key: 'company', id: 'company' },
+        { key: 'startDate', id: 'start-date' },
+        { key: 'endDate', id: 'end-date' },
+        { key: 'position', id: 'position' },
+        { key: 'achievement1', id: 'Achievement1' },
+        { key: 'achievement2', id: 'Achievement2' },
+        { key: 'achievement3', id: 'Achievement3' }
+    ];
+
+    // 3. Loop through the fields and save them to localStorage.
+    // This is much cleaner than writing localStorage.setItem 20 times.
+    textFields.forEach(field => {
+        const element = document.getElementById(field.id);
+        if (element) {
+            localStorage.setItem(field.key, element.value);
         }
+    });
+
+    // 4. Handle the profile picture with a Promise for reliability.
+    const profilePicInput = document.getElementById("img");
+    try {
+        const imageDataUrl = await processImage(profilePicInput);
+        if (imageDataUrl) {
+            localStorage.setItem("profilePic", imageDataUrl);
+        }
+        
+        // 5. Everything is saved, NOW we can safely redirect.
+        console.log("All data saved. Redirecting...");
+        window.location.href = "resume.html";
+
+    } catch (error) {
+        console.error("Error processing the image:", error);
+        alert("There was an error uploading the image. Please try again.");
     }
 }
 
-window.addEventListener("load", () => {
-    const get = key => localStorage.getItem(key) || "";
+// This helper function wraps the FileReader in a Promise.
+function processImage(fileInput) {
+    return new Promise((resolve, reject) => {
+        // Check if a file was actually selected
+        if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+            resolve(null); // No file, resolve with null
+            return;
+        }
 
-    setTextOrHide("resName", get("name"));
-    setTextOrHide("resDesig", get("designation"));
-    setTextOrHide("resEmail", get("email"));
-    setTextOrHide("resPhone", get("phone"));
-    setTextOrHide("resAddress", get("address"));
-    setTextOrHide("resPassingYear1", get("passingYear1"));
-    setTextOrHide("resPassingYear2", get("passingYear2"));
-    setTextOrHide("resDegree1", get("degree1"));
-    setTextOrHide("resDegree2", get("degree2"));
-    setTextOrHide("resInstitution1", get("institution1"));
-    setTextOrHide("resInstitution2", get("institution2"));
-    setTextOrHide("resSkill1", get("skill1"));
-    setTextOrHide("resSkill2", get("skill2"));
-    setTextOrHide("resLanguage1", get("language1"));
-    setTextOrHide("resLanguage2", get("language2"));
-    setTextOrHide("resCompany", get("company"));
-    setTextOrHide("resStartDate", get("startDate"));
-    setTextOrHide("resEndDate", get("endDate"));
-    setTextOrHide("resPosition", get("position"));
-    setTextOrHide("resAchievement1", get("achievement1"));
-    setTextOrHide("resAchievement2", get("achievement2"));
-    setTextOrHide("resAchievement3", get("achievement3"));
+        const file = fileInput.files[0];
+        const reader = new FileReader();
 
-    const profileImg = document.getElementById("profileImg");
-    const profilePic = get("profilePic");
-    if (profileImg && profilePic) {
-        profileImg.src = profilePic;
-        profileImg.alt = get("name") + " profile picture";
-    }
-});
-
-const printBtn = document.getElementById("print-btn");
-printBtn?.addEventListener("click", () => {
-    window.print();
-});
-
-const pdfBtn = document.createElement("button");
-pdfBtn.textContent = "Download PDF";
-pdfBtn.id = "pdf-btn";
-pdfBtn.style.marginLeft = "12px";
-document.querySelector(".resumebtn")?.appendChild(pdfBtn);
-
-pdfBtn.addEventListener("click", () => {
-    window.scrollTo(0, 0);
-    
-    document.body.classList.add("pdf-export");
-    
-    setTimeout(() => {
-        const element = document.querySelector(".real");
-        const name = document.getElementById("resName")?.textContent || "Resume";
-        const date = new Date().toISOString().slice(0,10);
-        
-        const opt = {
-            margin: 0,
-            filename: `${name.replace(/\s+/g, "_")}_Resume_${date}.pdf`,
-            image: { 
-                type: 'jpeg', 
-                quality: 0.98 
-            },
-            html2canvas: { 
-                scale: 2,
-                useCORS: true, 
-                backgroundColor: "#fff",
-                windowWidth: element.scrollWidth,
-                windowHeight: element.scrollHeight
-            },
-            jsPDF: { 
-                unit: 'mm', 
-                format: 'a4', 
-                orientation: 'portrait' 
-            },
-            pagebreak: { 
-                mode: 'avoid-all',
-                before: '.page-break'
-            }
+        reader.onload = () => {
+            resolve(reader.result?.toString() || "");
         };
-        
-        html2pdf().set(opt).from(element).save().then(() => {
-            document.body.classList.remove("pdf-export");
-        });
-    }, 100);
-});
+
+        reader.onerror = (error) => {
+            reject(error);
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
+
+// Attach the event listener to the form
+if (resumeForm) {
+    resumeForm.addEventListener("submit", handleFormSubmit);
+}
